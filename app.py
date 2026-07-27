@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-Mudassir Zone - Live CNIC Tracker & Sim Database 2026
-Features: Pink Theme, Protected API Fetching, Admin Control, User Tracing Logs, HilltopAds Integration
+Mudassir Zone - Official CNIC & Sim Database Tracker
+Features:
+- Individual User Audit Logs & IP Detection
+- Multi-Theme Support (Pink, Cyan, Purple)
+- Protected Backend API Proxy
+- Master Admin Control with Session Termination
+- Signed Official PDF Engine Integration
 """
 
 import os
@@ -13,18 +18,18 @@ from flask import (
 )
 
 app = Flask(__name__)
-app.secret_key = "mudassir-secret-pink-key-2026"
+app.secret_key = "mudassir-official-secure-key-2026"
 
-DB_FILE = "/tmp/mudassir_database.db"
+DB_FILE = "/tmp/mudassir_official_db.db"
 
 # Master Credentials
 ADMIN_USER = "malikmudasirkhar001@gmail.com"
 ADMIN_PASS = "1111"
 
-# HIDDEN API CONFIGURATION (Protected from client theft)
+# HIDDEN API CONFIGURATION
 PROTECTED_API_BASE = "https://sim-api.fakcloud.tech/"
 
-# Adsterra / HilltopAds Direct Links & VAST Video URL
+# Adsterra / HilltopAds Direct Link
 VAST_AD_URL = "https://surefootedpause.com/dGmsFnzTd.GYNpvTZ/GSUh/EeIm/9bu/Z/UTlLkGPVTHcPyhNwjIEQ1/M/TBc/t/NDztIP2/METwURyIM/SiZUsOaUWH1kppdwDT0_xD"
 
 def get_db():
@@ -50,32 +55,13 @@ def init_db():
                 user_email TEXT NOT NULL,
                 target_query TEXT NOT NULL,
                 timestamp TEXT NOT NULL,
-                ip_address TEXT
+                ip_address TEXT NOT NULL
             )
         ''')
         conn.commit()
 
 with app.app_context():
     init_db()
-
-# ----------------------------------------------------------------------------
-# HILLTOPADS VERIFICATION ROUTE & ADS HEAD
-# ----------------------------------------------------------------------------
-HILLTOP_AD_HEAD = """
-<meta name="1902dca9dec5be85e1ad2e0dbc933621e76d8332" content="1902dca9dec5be85e1ad2e0dbc933621e76d8332" />
-<script>
-(function(yufn){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = yufn || {};
-s.src = "//surefootedpause.com/c.Dy9X6/bf2Q5YlHSIWZQp9KNpzyI/2UM/T_QDyLOYSq0E3jMIjHYmxKNCD/M-z-";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
-"""
 
 # ----------------------------------------------------------------------------
 # FRONTEND ROUTE
@@ -86,38 +72,44 @@ def index():
         with open('index.html', 'r', encoding='utf-8') as f:
             return render_template_string(f.read())
     except FileNotFoundError:
-        return "<h3>Error: 'index.html' not found!</h3>", 404
+        return "<h3>Error: 'index.html' file not found!</h3>", 404
 
 # ----------------------------------------------------------------------------
-# PROTECTED API PROXY (Prevents API Key / Target Data Leakage)
+# PROTECTED API & USER TRACKING PROXY
 # ----------------------------------------------------------------------------
 @app.route('/api/protected/trace', methods=['GET'])
 def protected_trace():
     query = request.args.get('q', '').strip()
-    auth_role = request.cookies.get('session_role')
     user_email = request.cookies.get('session_auth')
+    auth_role = request.cookies.get('session_role')
+
+    if not user_email:
+        return jsonify({"success": False, "message": "Unauthorized access! Please login first."}), 401
 
     if not query:
-        return jsonify({"success": False, "message": "Query parameter missing"}), 400
+        return jsonify({"success": False, "message": "Search query missing."}), 400
 
-    # Log search data in Database for Admin Monitoring
+    # Capture User IP
+    user_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    if user_ip and ',' in user_ip:
+        user_ip = user_ip.split(',')[0].strip()
+
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    log_user = user_email if user_email else "Guest / Free Access User"
-    client_ip = request.remote_addr
 
+    # Store User Specific Search Record in Database
     with get_db() as conn:
         conn.execute(
             'INSERT INTO trace_logs (user_email, target_query, timestamp, ip_address) VALUES (?, ?, ?, ?)',
-            (log_user, query, now, client_ip)
+            (user_email, query, now, user_ip)
         )
         conn.commit()
 
-    # Call external API securely from backend
+    # Call Main API Proxy
     try:
         api_res = requests.get(f"{PROTECTED_API_BASE}?q={query}", timeout=10)
         return jsonify(api_res.json())
     except Exception as e:
-        return jsonify({"success": False, "message": "Server-side trace lookup failed"}), 500
+        return jsonify({"success": False, "message": "Server-side search failed."}), 500
 
 # ----------------------------------------------------------------------------
 # AUTHENTICATION API
@@ -125,15 +117,15 @@ def protected_trace():
 @app.route('/api/auth/login', methods=['POST'])
 def api_login():
     data = request.get_json() or {}
-    email = data.get('email', '').strip()
+    email = data.get('email', '').strip().lower()
     password = data.get('password', '')
 
     if not email or not password:
         return jsonify({"success": False, "message": "All fields are required."}), 400
 
     if email == ADMIN_USER and password == ADMIN_PASS:
-        resp = make_response(jsonify({"success": True, "role": "admin"}))
-        resp.set_cookie('session_auth', 'admin_verified', httponly=True, samesite='Lax')
+        resp = make_response(jsonify({"success": True, "role": "admin", "email": email}))
+        resp.set_cookie('session_auth', email, httponly=True, samesite='Lax')
         resp.set_cookie('session_role', 'admin', httponly=False, samesite='Lax')
         return resp
 
@@ -143,14 +135,14 @@ def api_login():
     if user and user['password'] == password:
         expiry_dt = datetime.strptime(user['expiry_date'], "%Y-%m-%d %H:%M:%S")
         if datetime.now() > expiry_dt:
-            return jsonify({"success": False, "message": "Your account access has expired. Please contact Mudassir Support."}), 403
+            return jsonify({"success": False, "message": "Your subscription has expired. Contact Mudassir Support."}), 403
             
-        resp = make_response(jsonify({"success": True, "role": "user"}))
+        resp = make_response(jsonify({"success": True, "role": "user", "email": email}))
         resp.set_cookie('session_auth', email, httponly=True, samesite='Lax')
         resp.set_cookie('session_role', 'user', httponly=False, samesite='Lax')
         return resp
 
-    return jsonify({"success": False, "message": "Invalid login credentials."}), 401
+    return jsonify({"success": False, "message": "Invalid email or access key password."}), 401
 
 @app.route('/api/auth/logout', methods=['POST'])
 def api_logout():
@@ -160,7 +152,7 @@ def api_logout():
     return resp
 
 # ----------------------------------------------------------------------------
-# ADMIN PANEL ROUTES
+# ADMIN AUDIT & USER MANAGEMENT ROUTES
 # ----------------------------------------------------------------------------
 @app.route('/api/admin/users', methods=['GET'])
 def admin_list_users():
@@ -174,6 +166,10 @@ def admin_list_users():
     for u in users:
         expiry_dt = datetime.strptime(u['expiry_date'], "%Y-%m-%d %H:%M:%S")
         status = "Active" if datetime.now() < expiry_dt else "Expired"
+        
+        # Count total searches for each user
+        search_count = conn.execute('SELECT COUNT(*) FROM trace_logs WHERE user_email = ?', (u['email'],)).fetchone()[0]
+        
         user_list.append({
             "id": u['id'],
             "email": u['email'],
@@ -181,20 +177,24 @@ def admin_list_users():
             "created_at": u['created_at'],
             "validity_days": u['validity_days'],
             "expiry_date": u['expiry_date'],
+            "searches_done": search_count,
             "status": status
         })
     return jsonify({"success": True, "users": user_list})
 
-@app.route('/api/admin/trace_logs', methods=['GET'])
-def admin_trace_logs():
+@app.route('/api/admin/user_logs/<path:target_email>', methods=['GET'])
+def admin_user_specific_logs(target_email):
     if request.cookies.get('session_role') != 'admin':
         return jsonify({"success": False, "message": "Access Denied"}), 403
         
     with get_db() as conn:
-        logs = conn.execute('SELECT user_email, target_query, timestamp, ip_address FROM trace_logs ORDER BY id DESC LIMIT 500').fetchall()
+        logs = conn.execute(
+            'SELECT target_query, timestamp, ip_address FROM trace_logs WHERE user_email = ? ORDER BY id DESC',
+            (target_email,)
+        ).fetchall()
         
-    log_list = [{"user": l['user_email'], "target": l['target_query'], "time": l['timestamp'], "ip": l['ip_address']} for l in logs]
-    return jsonify({"success": True, "logs": log_list})
+    log_list = [{"query": l['target_query'], "time": l['timestamp'], "ip": l['ip_address']} for l in logs]
+    return jsonify({"success": True, "email": target_email, "logs": log_list})
 
 @app.route('/api/admin/users/create', methods=['POST'])
 def admin_create_user():
@@ -202,7 +202,7 @@ def admin_create_user():
         return jsonify({"success": False, "message": "Access Denied"}), 403
         
     data = request.get_json() or {}
-    email = data.get('email', '').strip()
+    email = data.get('email', '').strip().lower()
     password = data.get('password', '')
     days = data.get('days')
 
@@ -212,7 +212,7 @@ def admin_create_user():
     try:
         days_int = int(days)
     except ValueError:
-        return jsonify({"success": False, "message": "Validity must be days integer."}), 400
+        return jsonify({"success": False, "message": "Days must be an integer."}), 400
 
     now = datetime.now()
     created_at = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -225,9 +225,9 @@ def admin_create_user():
                 (email, password, created_at, days_int, expiry_date)
             )
             conn.commit()
-        return jsonify({"success": True, "message": "User access created successfully."})
+        return jsonify({"success": True, "message": "User provisioned successfully."})
     except sqlite3.IntegrityError:
-        return jsonify({"success": False, "message": "User with this email already exists."}), 409
+        return jsonify({"success": False, "message": "This email already exists."}), 409
 
 @app.route('/api/admin/users/delete/<int:user_id>', methods=['DELETE'])
 def admin_delete_user(user_id):
@@ -237,7 +237,7 @@ def admin_delete_user(user_id):
     with get_db() as conn:
         conn.execute('DELETE FROM users WHERE id = ?', (user_id,))
         conn.commit()
-    return jsonify({"success": True, "message": "User access removed."})
+    return jsonify({"success": True, "message": "User access revoked and deleted."})
 
 @app.route("/1902dca9dec5be85e1ad2e0dbc933621e76d8332")
 @app.route("/1902dca9dec5be85e1ad2e0dbc933621e76d8332.txt")
