@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
-    <!-- Official Signed PDF Generation Engine -->
+    <!-- Official Signed PDF Generator -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <meta name="1902dca9dec5be85e1ad2e0dbc933621e76d8332" content="1902dca9dec5be85e1ad2e0dbc933621e76d8332" />
@@ -26,9 +26,9 @@
 
     <style>
         /* THEMES CSS SETUP */
-        .theme-pink { --accent: #ec4899; --accent-dark: #db2777; --bg-glow: rgba(236,72,153,0.2); }
-        .theme-cyan { --accent: #00E5FF; --accent-dark: #00B8D4; --bg-glow: rgba(0,229,255,0.2); }
-        .theme-purple { --accent: #a855f7; --accent-dark: #7e22ce; --bg-glow: rgba(168,85,247,0.2); }
+        .theme-pink { --accent: #ec4899; --accent-dark: #db2777; --bg-glow: rgba(236,72,153,0.25); }
+        .theme-cyan { --accent: #00E5FF; --accent-dark: #00B8D4; --bg-glow: rgba(0,229,255,0.25); }
+        .theme-purple { --accent: #a855f7; --accent-dark: #7e22ce; --bg-glow: rgba(168,85,247,0.25); }
 
         body { font-family: 'Segoe UI', system-ui, sans-serif; background: #07090e; color: #fff; }
 
@@ -88,7 +88,7 @@
 
             <div class="mt-6 text-center border-t border-slate-800 pt-4">
                 <p class="text-xs text-slate-400 mb-2 font-mono">Don't have an access key?</p>
-                <a href="https://wa.me/923084191378?text=Hello%20Mudassir%20I%20Want%20Access%20Key" target="_blank" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-xl font-mono text-xs inline-flex items-center justify-center gap-2 transition-all">
+                <a href="https://wa.me/923084191378?text=Hello%20Mudassir%20I%20Want%20Access%20Key" target="_blank" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-xl font-mono text-xs inline-flex items-center justify-center gap-2 transition-all shadow-lg">
                     <i class="bi bi-whatsapp text-lg"></i> Contact Mudassir (0308 41 91 378)
                 </a>
             </div>
@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <!-- THEME SWITCHER SELECTOR -->
+                    <!-- THEME SWITCHER -->
                     <select onchange="changeTheme(this.value)" class="bg-black border border-slate-700 text-xs text-[var(--accent)] font-mono rounded-lg p-1.5 outline-none">
                         <option value="theme-pink">Pink Neon</option>
                         <option value="theme-cyan">Cyber Cyan</option>
@@ -159,32 +159,32 @@
       <button class="skip-btn hidden" id="bottom_skip_btn" onclick="skipAd('bottom_ad_container')">Skip Ad ✕</button>
     </div>
 
-    <!-- MASTER ADMIN AUDIT MODAL -->
+    <!-- MASTER ADMIN CONTROL & USER HISTORY AUDIT MODAL -->
     <div id="admin-modal" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-4">
         <div class="bg-slate-900 border border-[var(--accent)] rounded-2xl p-6 max-w-3xl w-full max-h-[85vh] overflow-y-auto relative">
             <span onclick="closeModal('admin-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">✕</span>
-            <h3 class="text-lg font-mono font-bold text-[var(--accent)] mb-4"><i class="bi bi-shield-lock"></i> Master Admin Controls</h3>
+            <h3 class="text-lg font-mono font-bold text-[var(--accent)] mb-4"><i class="bi bi-shield-lock"></i> Master Admin Audit Controls</h3>
             
-            <!-- Provision User Section -->
+            <!-- Provision New User -->
             <div class="bg-black/60 p-4 rounded-xl border border-slate-800 mb-6">
                 <h4 class="text-xs font-mono text-[var(--accent)] mb-2 font-bold">Provision New User Account</h4>
                 <form id="create-user-form" class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <input type="email" id="new-user-email" placeholder="User Email" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white">
-                    <input type="text" id="new-user-pass" placeholder="Assign Password" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white">
-                    <input type="number" id="new-user-days" placeholder="Days" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white">
+                    <input type="email" id="new-user-email" placeholder="User Email" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white font-mono">
+                    <input type="text" id="new-user-pass" placeholder="Assign Password" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white font-mono">
+                    <input type="number" id="new-user-days" placeholder="Days" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white font-mono">
                     <button type="submit" class="md:col-span-3 bg-[var(--accent)] text-black font-mono text-xs font-bold p-2 rounded">PROVISION ACCESS NODE</button>
                 </form>
             </div>
 
-            <!-- Users List Table -->
-            <h4 class="text-xs font-mono text-white mb-2 font-bold">Registered Users (Click 'View History' to Audit Searches)</h4>
+            <!-- Users List Table with View History Buttons -->
+            <h4 class="text-xs font-mono text-white mb-2 font-bold">Registered Users (Click 'View History' to Audit Search Logs)</h4>
             <div id="admin-users-table" class="mb-6 overflow-x-auto text-xs"></div>
 
-            <!-- Individual User Specific Search Audit Logs -->
+            <!-- Specific User Search Audit Logs Panel -->
             <div id="user-audit-container" class="hidden bg-black/80 p-4 rounded-xl border border-pink-500/50">
-                <div class="flex justify-between items-center mb-2">
+                <div class="flex justify-between items-center mb-3">
                     <h4 class="text-xs font-mono text-pink-400 font-bold" id="audit-user-title">User Audit Log</h4>
-                    <button onclick="document.getElementById('user-audit-container').classList.add('hidden')" class="text-xs text-red-400 font-mono">Close Audit</button>
+                    <button onclick="document.getElementById('user-audit-container').classList.add('hidden')" class="text-xs text-red-400 font-mono font-bold">Close Audit</button>
                 </div>
                 <div id="user-audit-table" class="overflow-x-auto text-xs"></div>
             </div>
@@ -193,7 +193,6 @@
 
     <script>
         const VAST_AD_URL = "https://surefootedpause.com/dGmsFnzTd.GYNpvTZ/GSUh/EeIm/9bu/Z/UTlLkGPVTHcPyhNwjIEQ1/M/TBc/t/NDztIP2/METwURyIM/SiZUsOaUWH1kppdwDT0_xD";
-        let loggedInUserEmail = "";
 
         function changeTheme(themeClass) {
             document.documentElement.className = themeClass;
@@ -211,7 +210,7 @@
         function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); }
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
 
-        // GATEKEEPER LOGIN HANDLER
+        // GATEKEEPER LOGIN
         document.getElementById('gate-login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('gate-email').value;
@@ -224,7 +223,6 @@
             });
             const data = await res.json();
             if (data.success) {
-                loggedInUserEmail = data.email;
                 document.getElementById('auth-gatekeeper').classList.add('hidden');
                 document.getElementById('main-app-content').classList.remove('hidden');
                 if (data.role === 'admin') {
@@ -241,7 +239,7 @@
             location.reload();
         }
 
-        // OFFICIAL SIGNED PDF GENERATOR
+        // OFFICIAL SIGNED PDF GENERATION ENGINE
         function downloadOfficialPDF(phone, name, cnic, address) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -270,7 +268,7 @@
             doc.text(`National Identity (CNIC): ${cnic || 'N/A'}`, 20, 93);
             doc.text(`Registered Address: ${address || 'N/A'}`, 20, 106);
 
-            // Mudassir Abbas Official Signature & Digital Stamp Box
+            // Official Signature & Digital Stamp
             doc.setDrawColor(34, 197, 94);
             doc.rect(125, 140, 68, 28);
             doc.setTextColor(34, 197, 94);
@@ -285,7 +283,7 @@
             showToast("Official Signed PDF Exported");
         }
 
-        // SMART AD PLAYER WITH SKIP MECHANIC
+        // SMART VAST VIDEO PLAYER ENGINE
         async function loadVASTVideo(videoId, skipBtnId) {
             try {
                 const response = await fetch(VAST_AD_URL);
@@ -319,7 +317,7 @@
             loadVASTVideo("bottom_video_player", "bottom_skip_btn");
         });
 
-        // SEARCH EXECUTION HANDLER
+        // EXECUTE QUERY HANDLER
         document.getElementById('lookup-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const container = document.getElementById('results-container');
@@ -353,7 +351,7 @@
             }
         });
 
-        // ADMIN PANEL & AUDIT FUNCTIONS
+        // ADMIN AUDIT FUNCTIONS
         function openAdminModal() {
             openModal('admin-modal');
             loadAdminUsers();
@@ -369,10 +367,10 @@
                     html += `<tr class="border-b border-slate-800">
                         <td>${u.email}</td>
                         <td class="text-pink-400 font-bold">${u.password}</td>
-                        <td class="text-green-400 font-bold">${u.searches_done} Searches</td>
+                        <td class="text-green-400 font-bold">${u.total_searches} Searches</td>
                         <td>${u.expiry_date}</td>
                         <td>
-                            <button onclick="viewUserAuditLogs('${u.email}')" class="text-cyan-400 font-bold mr-2">View History</button>
+                            <button onclick="viewUserHistory('${u.email}')" class="text-cyan-400 font-bold mr-2">View History</button>
                             <button onclick="deleteUser(${u.id})" class="text-red-400 font-bold">Delete</button>
                         </td>
                     </tr>`;
@@ -382,16 +380,22 @@
             }
         }
 
-        async function viewUserAuditLogs(email) {
-            const res = await fetch(`/api/admin/user_logs/${encodeURIComponent(email)}`);
+        // Fetch & render individual user search history
+        async function viewUserHistory(email) {
+            const res = await fetch(`/api/admin/user_history/${encodeURIComponent(email)}`);
             const data = await res.json();
             if (data.success) {
                 document.getElementById('user-audit-container').classList.remove('hidden');
-                document.getElementById('audit-user-title').innerText = `Audit History For: ${email}`;
+                document.getElementById('audit-user-title').innerText = `Search Audit History For: ${email}`;
+
+                if (data.history.length === 0) {
+                    document.getElementById('user-audit-table').innerHTML = `<p class="text-slate-400 py-2">No searches logged for this user yet.</p>`;
+                    return;
+                }
 
                 let html = `<table class="w-full text-left border-collapse">
-                    <tr class="border-b border-slate-700 text-pink-400"><th>Target Queried</th><th>Time</th><th>User IP Address</th></tr>`;
-                data.logs.forEach(l => {
+                    <tr class="border-b border-slate-700 text-pink-400"><th>Target Queried</th><th>Timestamp</th><th>User IP Address</th></tr>`;
+                data.history.forEach(l => {
                     html += `<tr class="border-b border-slate-800">
                         <td class="text-pink-400 font-bold">${l.query}</td><td>${l.time}</td><td>${l.ip}</td>
                     </tr>`;
