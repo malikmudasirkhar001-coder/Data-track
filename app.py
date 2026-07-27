@@ -239,11 +239,16 @@ def admin_delete_user(user_id):
         conn.commit()
     return jsonify({"success": True, "message": "User access revoked."})
 
-# HILLTOPADS PERMANENT VERIFICATION ROUTE
+# HILLTOPADS PERMANENT VERIFICATION ROUTES (OLD & NEW)
 @app.route("/1902dca9dec5be85e1ad2e0dbc933621e76d8332")
 @app.route("/1902dca9dec5be85e1ad2e0dbc933621e76d8332.txt")
-def hilltopads_file():
+def hilltopads_old_file():
     return "1902dca9dec5be85e1ad2e0dbc933621e76d8332"
+
+@app.route("/08f8a931d49d85617de79bfea5b5a79949205e60")
+@app.route("/08f8a931d49d85617de79bfea5b5a79949205e60.txt")
+def hilltopads_new_file():
+    return "08f8a931d49d85617de79bfea5b5a79949205e60"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
