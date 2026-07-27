@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudassir Zone | Premium Sim Database & Live CNIC Tracker</title>
+    <meta name="description" content="Mudassir Zone Sim Database 2026 - Ultimate live tracker, CNIC lookup, and mobile number trace tool.">
+    <meta name="keywords" content="Mudassir Zone, sim database online, live tracker pakistan, cnic tracker, trace mobile number">
+    <meta name="author" content="Mudassir">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- jsPDF Library for Official Signed PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <meta name="1902dca9dec5be85e1ad2e0dbc933621e76d8332" content="1902dca9dec5be85e1ad2e0dbc933621e76d8332" />
+    <script>
+    (function(yufn){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = yufn || {};
+    s.src = "//surefootedpause.com/c.Dy9X6/bf2Q5YlHSIWZQp9KNpzyI/2UM/T_QDyLOYSq0E3jMIjHYmxKNCD/M-z-";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mudassir: {
+                            400: '#ff66b2',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            900: '#831843'
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'fade-in': 'fadeIn 0.2s ease-in',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #db2777; border-radius: 4px; }
+        .glass-card { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .toast-enter { transform: translateX(100%); opacity: 0; }
+        .toast-active { transform: translateX(0); opacity: 1; }
+
+        .auto-top-video-frame {
+            position: fixed; top: 0; left: 0; width: 100%; height: 90px;
+            background: #000; border-bottom: 2px solid #ec4899;
+            z-index: 9999; overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        .auto-top-video-frame video { width: 100%; height: 100%; object-fit: cover; }
+
+        .auto-bottom-video-frame {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 90px;
+            background: #000; border-top: 2px solid #ec4899;
+            z-index: 9999; overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        .auto-bottom-video-frame video { width: 100%; height: 100%; object-fit: cover; }
+
+        .middle-work-area {
+            position: fixed; top: 90px; bottom: 90px; left: 0; right: 0;
+            overflow-y: auto; -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col relative selection:bg-mudassir-500 selection:text-white">
+
+    <!-- TOP VIDEO AD -->
+    <div class="auto-top-video-frame">
+      <video id="top_video_player" autoplay muted loop playsinline></video>
+    </div>
+
+    <div class="middle-work-area">
+        <div id="toast-container" class="fixed bottom-24 right-4 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+        <!-- NAVIGATION BAR -->
+        <nav class="sticky top-0 z-40 bg-slate-900/90 glass-card border-b border-mudassir-500/30">
+            <div class="max-w-4xl mx-auto px-4 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-mudassir-500 to-pink-700 flex items-center justify-center text-white text-xl font-black ring-2 ring-mudassir-500 shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                        M
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-mudassir-400 to-pink-500">Mudassir Zone</h1>
+                        <p class="text-[10px] text-mudassir-400/80 font-mono tracking-widest uppercase">Mudassir.Zone.Id Resolution Node</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="openModal('login-modal')" class="px-4 py-2 bg-mudassir-600 hover:bg-mudassir-500 text-white rounded-full font-bold text-xs font-mono transition-all shadow-[0_0_10px_rgba(236,72,153,0.4)]">
+                        <i class="bi bi-box-arrow-in-right mr-1"></i> LOGIN / ADMIN
+                    </button>
+                    <a href="https://wa.me/923084191378?text=Hello%20Mudassir%20I%20Want%20Free%20Access%20Key" target="_blank" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold text-xs font-mono transition-all">
+                        <i class="bi bi-whatsapp mr-1"></i> FREE ACCESS
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-4xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
+            
+            <div class="flex bg-slate-900/80 p-1 rounded-xl border border-mudassir-500/20">
+                <button onclick="switchTab('search')" id="tab-search" class="flex-1 py-3 text-sm md:text-base font-bold rounded-lg bg-mudassir-600 text-white shadow-sm transition-all">
+                    <i class="bi bi-crosshair mr-2"></i>Target Trace
+                </button>
+                <button onclick="switchTab('history')" id="tab-history" class="flex-1 py-3 text-sm md:text-base font-bold rounded-lg text-slate-400 hover:text-white transition-all">
+                    <i class="bi bi-hdd-network mr-2"></i>Local Logs
+                </button>
+            </div>
+
+            <!-- SEARCH SECTION -->
+            <section id="view-search" class="animate-fade-in flex flex-col gap-6">
+                <div class="bg-slate-900 border border-mudassir-500/40 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgba(236,72,153,0.15)] relative overflow-hidden">
+                    <h2 class="text-2xl font-bold mb-2 font-mono flex items-center gap-2 text-mudassir-400">
+                        <i class="bi bi-terminal text-mudassir-500"></i> Initialize Trace
+                    </h2>
+                    <p class="text-sm text-slate-400 mb-6 font-mono">Input valid 11-digit MSISDN or 13-digit CNIC for Mudassir Zone Lookup.</p>
+                    
+                    <form id="lookup-form" class="flex flex-col gap-4">
+                        <div class="relative">
+                            <i class="bi bi-cpu-fill absolute left-4 top-1/2 -translate-y-1/2 text-mudassir-500"></i>
+                            <input type="text" id="lookup-input" required autocomplete="off" placeholder="e.g., 03xxxxxxxxx or 3xxxxxxxxxxxx" class="w-full bg-black/60 border border-mudassir-500/50 text-mudassir-400 rounded-xl pl-12 pr-4 py-4 focus:ring-2 focus:ring-mudassir-500 outline-none transition-all text-lg font-mono tracking-widest">
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-mudassir-600 to-pink-500 hover:from-pink-500 hover:to-mudassir-600 text-white font-extrabold text-lg py-4 rounded-xl shadow-[0_4px_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5 transition-all flex justify-center items-center gap-2">
+                            <i class="bi bi-radar"></i> EXECUTE QUERY
+                        </button>
+                    </form>
+                </div>
+
+                <div id="results-container" class="hidden animate-slide-up"></div>
+            </section>
+
+            <!-- HISTORY LOGS SECTION -->
+            <section id="view-history" class="hidden flex-col gap-4 animate-fade-in">
+                <div class="flex items-center justify-between bg-slate-900 border border-mudassir-500/30 p-4 rounded-xl">
+                    <h2 class="text-lg font-bold font-mono text-mudassir-400"><i class="bi bi-database text-mudassir-500 mr-2"></i>Mudassir Cache</h2>
+                    <button onclick="clearHistory()" class="text-sm text-red-400 hover:text-red-300 font-mono font-semibold px-3 py-1 rounded-md hover:bg-red-500/10 transition-colors">
+                        <i class="bi bi-trash3"></i> PURGE
+                    </button>
+                </div>
+                <div id="history-list" class="flex flex-col gap-3"></div>
+            </section>
+
+            <!-- WHATSAPP CONTACT LINK -->
+            <a href="https://wa.me/923084191378?text=Hello%20Mudassir%20I%20Need%20Help%20With%20Panel" target="_blank" class="mt-4 bg-gradient-to-br from-slate-900 to-black border border-mudassir-500/40 rounded-2xl p-6 shadow-xl hover:border-green-500 transition-colors flex items-center justify-between group">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-black border border-green-500/50 rounded-full flex items-center justify-center text-green-400 text-2xl shadow-[0_0_15px_rgba(34,197,94,0.4)]">
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-mono font-bold text-lg group-hover:text-green-400 transition-colors">MUDASSIR ZONE SUPPORT HQ</h3>
+                        <p class="text-slate-400 text-xs font-mono">Contact Mudassir (0308 91 378) for Instant Access Keys.</p>
+                    </div>
+                </div>
+                <i class="bi bi-box-arrow-up-right text-slate-500 group-hover:text-green-400 text-xl transition-colors"></i>
+            </a>
+
+        </main>
+    </div>
+
+    <!-- BOTTOM VIDEO AD -->
+    <div class="auto-bottom-video-frame">
+      <video id="bottom_video_player" autoplay muted loop playsinline></video>
+    </div>
+
+    <!-- LOGIN / ADMIN MODALS -->
+    <div id="login-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-mudassir-500 rounded-2xl p-6 max-w-md w-full relative">
+            <span onclick="closeModal('login-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">✕</span>
+            <h3 class="text-xl font-mono font-bold text-mudassir-400 mb-4">Portal Authorization</h3>
+            <form id="login-form" class="flex flex-col gap-3">
+                <input type="email" id="login-email" placeholder="Email Address" required class="bg-black border border-slate-700 p-3 rounded-lg text-sm text-white outline-none focus:border-mudassir-500">
+                <input type="password" id="login-password" placeholder="Access Password" required class="bg-black border border-slate-700 p-3 rounded-lg text-sm text-white outline-none focus:border-mudassir-500">
+                <button type="submit" class="bg-mudassir-600 hover:bg-mudassir-500 text-white font-bold p-3 rounded-lg font-mono">AUTHENTICATE</button>
+            </form>
+            <div class="mt-4 text-center">
+                <a href="https://wa.me/923084191378?text=Hello%20Mudassir%20I%20Want%20Free%20Access%20Key" target="_blank" class="text-xs text-green-400 font-mono hover:underline">💬 Don't have access? Request Free Access on WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL -->
+    <div id="admin-modal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-mudassir-500 rounded-2xl p-6 max-w-2xl w-full max-h-[85vh] overflow-y-auto relative">
+            <span onclick="closeModal('admin-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">✕</span>
+            <h3 class="text-xl font-mono font-bold text-mudassir-400 mb-4"><i class="bi bi-shield-lock"></i> Master Admin Controls</h3>
+            
+            <!-- Create User Section -->
+            <div class="bg-black/50 p-4 rounded-xl border border-slate-800 mb-6">
+                <h4 class="text-sm font-mono text-mudassir-400 mb-2 font-bold">Provision New User Account</h4>
+                <form id="create-user-form" class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <input type="email" id="new-user-email" placeholder="User Email" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white">
+                    <input type="text" id="new-user-pass" placeholder="Assign Password" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white">
+                    <input type="number" id="new-user-days" placeholder="Validity Days" required class="bg-slate-900 border border-slate-700 p-2 text-xs rounded text-white">
+                    <button type="submit" class="md:col-span-3 bg-mudassir-600 text-white font-mono text-xs font-bold p-2 rounded">CREATE ACCESS NODE</button>
+                </form>
+            </div>
+
+            <!-- User Accounts Table -->
+            <h4 class="text-sm font-mono text-white mb-2 font-bold">Registered Users</h4>
+            <div id="admin-users-table" class="mb-6 overflow-x-auto text-xs"></div>
+
+            <!-- Target Trace Logs (Data Traced by Users) -->
+            <h4 class="text-sm font-mono text-white mb-2 font-bold">User Target Trace Audit Logs</h4>
+            <div id="admin-logs-table" class="overflow-x-auto text-xs"></div>
+        </div>
+    </div>
+
+    <script>
+        const VAST_AD_URL = "https://surefootedpause.com/dGmsFnzTd.GYNpvTZ/GSUh/EeIm/9bu/Z/UTlLkGPVTHcPyhNwjIEQ1/M/TBc/t/NDztIP2/METwURyIM/SiZUsOaUWH1kppdwDT0_xD";
+        
+        const toastContainer = document.getElementById('toast-container');
+        let searchHistory = JSON.parse(localStorage.getItem('mudassir_history') || '[]');
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
+
+        function showToast(msg, isError = false) {
+            const toast = document.createElement('div');
+            const bgClass = isError ? 'bg-red-500' : 'bg-slate-900 border-l-4 border-mudassir-500';
+            const textClass = isError ? 'text-white' : 'text-mudassir-400';
+            
+            toast.className = `flex items-center gap-3 px-4 py-3 rounded-r-xl shadow-lg font-mono text-xs transition-all duration-300 toast-enter ${bgClass} ${textClass}`;
+            toast.innerHTML = `<i class="bi bi-shield-check text-lg"></i> <span>${msg}</span>`;
+            
+            toastContainer.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.add('toast-active'));
+
+            setTimeout(() => {
+                toast.classList.remove('toast-active');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function switchTab(tab) {
+            const viewSearch = document.getElementById('view-search');
+            const viewHistory = document.getElementById('view-history');
+            const tabSearch = document.getElementById('tab-search');
+            const tabHistory = document.getElementById('tab-history');
+
+            if (tab === 'search') {
+                viewSearch.classList.remove('hidden'); viewHistory.classList.add('hidden');
+                tabSearch.className = "flex-1 py-3 text-sm md:text-base font-bold rounded-lg bg-mudassir-600 text-white shadow-sm transition-all";
+                tabHistory.className = "flex-1 py-3 text-sm md:text-base font-bold rounded-lg text-slate-400 hover:text-white transition-all";
+            } else {
+                viewSearch.classList.add('hidden'); viewHistory.classList.remove('hidden');
+                tabHistory.className = "flex-1 py-3 text-sm md:text-base font-bold rounded-lg bg-mudassir-600 text-white shadow-sm transition-all";
+                tabSearch.className = "flex-1 py-3 text-sm md:text-base font-bold rounded-lg text-slate-400 hover:text-white transition-all";
+                renderHistory();
+            }
+        }
+
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                btnElement.innerHTML = '<i class="bi bi-check2-all"></i> Copied';
+                showToast('Data copied to clipboard');
+                setTimeout(() => { btnElement.innerHTML = '<i class="bi bi-files"></i> COPY DATA'; }, 2000);
+            });
+        }
+
+        // Generate Signed PDF Export Function
+        function downloadOfficialPDF(phone, name, cnic, address) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Header Banner
+            doc.setFillColor(219, 39, 119); // Pink Theme Color
+            doc.rect(0, 0, 210, 30, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(18);
+            doc.text("MUDASSIR ZONE - OFFICIAL IDENTITY REPORT", 14, 20);
+
+            // Watermark & Details
+            doc.setTextColor(50, 50, 50);
+            doc.setFontSize(11);
+            doc.text(`Generated On: ${new Date().toLocaleString()}`, 14, 40);
+            doc.text(`Security Verification Node: MUDASSIR-SEC-2026`, 14, 47);
+
+            // Record Box
+            doc.setDrawColor(219, 39, 119);
+            doc.rect(14, 55, 182, 70);
+            
+            doc.setFontSize(12);
+            doc.text(`Target MSISDN: ${phone || 'N/A'}`, 20, 70);
+            doc.text(`Target Identity Name: ${name || 'N/A'}`, 20, 82);
+            doc.text(`National Identity CNIC: ${cnic || 'N/A'}`, 20, 94);
+            doc.text(`Registered Address: ${address || 'N/A'}`, 20, 106);
+
+            // Mudassir Official Digital Signature Stamp
+            doc.setDrawColor(34, 197, 94);
+            doc.rect(130, 140, 60, 25);
+            doc.setTextColor(34, 197, 94);
+            doc.setFontSize(10);
+            doc.text("VERIFIED & SIGNED", 135, 148);
+            doc.text("Mudassir Abbas ©", 135, 156);
+
+            doc.save(`Mudassir_Zone_${phone || 'Report'}.pdf`);
+            showToast("Official Signed PDF Downloaded");
+        }
+
+        function addToHistory(number, name) {
+            const entry = { number, name: name || 'UNKNOWN_ENTITY', time: new Date().toLocaleString() };
+            searchHistory.unshift(entry);
+            if (searchHistory.length > 50) searchHistory.pop();
+            localStorage.setItem('mudassir_history', JSON.stringify(searchHistory));
+        }
+
+        function clearHistory() {
+            searchHistory = []; localStorage.removeItem('mudassir_history');
+            renderHistory(); showToast('Cache purged');
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('history-list');
+            if (searchHistory.length === 0) {
+                list.innerHTML = `<div class="text-center py-8 text-slate-500 font-mono text-sm">NO LOGS FOUND</div>`;
+                return;
+            }
+            list.innerHTML = searchHistory.map(item => `
+                <div class="bg-black/60 border border-slate-800 p-4 rounded-xl flex justify-between items-center hover:border-mudassir-500 transition-all cursor-pointer" onclick="reRunSearch('${item.number}')">
+                    <div>
+                        <p class="font-bold text-mudassir-400 font-mono">${item.number}</p>
+                        <p class="text-xs text-slate-400 font-mono">${item.name}</p>
+                    </div>
+                    <div class="text-[10px] text-slate-500 font-mono">${item.time}</div>
+                </div>
+            `).join('');
+        }
+
+        function reRunSearch(num) {
+            document.getElementById('lookup-input').value = num; switchTab('search');
+            document.getElementById('lookup-form').dispatchEvent(new Event('submit'));
+        }
+
+        function buildResultCard(apiResponse) {
+            const records = apiResponse.data?.records || [];
+            if (records.length === 0) return `<div class="bg-red-950/50 border border-red-500 p-6 rounded-2xl text-center text-red-400 font-mono">NO RECORDS FOUND</div>`;
+
+            let copyData = `--- MUDASSIR ZONE SECURE EXPORT ---\n`;
+            records.forEach((item, i) => {
+                copyData += `\n[RECORD ${i+1}]\nPhone: ${item.phone || 'N/A'}\nName: ${item.full_name || 'N/A'}\nCNIC: ${item.cnic || 'N/A'}\nAddress: ${item.address || 'N/A'}\n`;
+            });
+
+            const recordsHtml = records.map((item) => `
+                <div class="p-6 flex flex-col gap-3 border-b border-slate-800 last:border-0 relative">
+                    <div class="flex justify-between py-2 border-b border-dashed border-slate-800">
+                        <span class="text-xs text-slate-400 font-mono">MOBILE MSISDN</span>
+                        <span class="font-mono text-mudassir-400 font-bold">${item.phone || 'N/A'}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-dashed border-slate-800">
+                        <span class="text-xs text-slate-400 font-mono">TARGET IDENTITY</span>
+                        <span class="font-mono text-white font-bold">${item.full_name || 'N/A'}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-dashed border-slate-800">
+                        <span class="text-xs text-slate-400 font-mono">NATIONAL ID (CNIC)</span>
+                        <span class="font-mono text-white font-bold">${item.cnic || 'N/A'}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-dashed border-slate-800">
+                        <span class="text-xs text-slate-400 font-mono">REGISTERED LOCATION</span>
+                        <span class="font-mono text-white text-xs">${item.address || 'N/A'}</span>
+                    </div>
+                    <button onclick="downloadOfficialPDF('${item.phone}', '${item.full_name}', '${item.cnic}', '${item.address}')" class="mt-2 w-full bg-mudassir-600 hover:bg-mudassir-500 text-white font-mono text-xs font-bold py-2 rounded-lg">
+                        <i class="bi bi-file-earmark-pdf-fill"></i> DOWNLOAD SIGNED OFFICIAL PDF
+                    </button>
+                </div>
+            `).join('');
+
+            return `
+                <div class="bg-black border border-mudassir-500/50 rounded-2xl overflow-hidden shadow-2xl mt-6">
+                    <div class="bg-slate-900 text-mudassir-400 p-4 font-mono text-xs border-b border-mudassir-500/30 flex justify-between items-center">
+                        <span>==== MUDASSIR ZONE TERMINAL ESTABLISHED ====</span>
+                        <button onclick="copyToClipboard(\`${copyData.replace(/`/g, '\\`')}\`, this)" class="bg-mudassir-600 text-white px-3 py-1 rounded text-xs">
+                            <i class="bi bi-files"></i> COPY DATA
+                        </button>
+                    </div>
+                    <div class="flex flex-col">${recordsHtml}</div>
+                </div>
+            `;
+        }
+
+        document.getElementById('lookup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inputEl = document.getElementById('lookup-input');
+            const container = document.getElementById('results-container');
+            const cleanNum = inputEl.value.replace(/[^0-9]/g, '');
+
+            container.classList.remove('hidden');
+            container.innerHTML = `<div class="p-8 text-center text-mudassir-400 font-mono">MUDASSIR ZONE SEARCHING DATABASE...</div>`;
+
+            try {
+                // Fetch using backend protected endpoint
+                const res = await fetch(`/api/protected/trace?q=${cleanNum}`);
+                const responseData = await res.json();
+                if (res.ok && responseData.success && responseData.data?.records?.length > 0) {
+                    showToast('TRACE COMPLETED');
+                    container.innerHTML = buildResultCard(responseData);
+                    const first = responseData.data.records[0];
+                    addToHistory(first.phone || cleanNum, first.full_name);
+                } else {
+                    container.innerHTML = `<div class="bg-red-950 border border-red-500 p-6 rounded-2xl text-center text-red-400 font-mono">DATA NOT FOUND</div>`;
+                }
+            } catch (err) {
+                container.innerHTML = `<div class="bg-red-950 border border-red-500 p-6 rounded-2xl text-center text-red-400 font-mono">SERVER TIMEOUT</div>`;
+            }
+        });
+
+        // Login Handler
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email, password})
+            });
+            const data = await res.json();
+            if (data.success) {
+                closeModal('login-modal');
+                if (data.role === 'admin') {
+                    openAdminPanel();
+                } else {
+                    showToast('Authenticated Successfully');
+                }
+            } else {
+                showToast(data.message, true);
+            }
+        });
+
+        async function openAdminPanel() {
+            openModal('admin-modal');
+            loadAdminUsers();
+            loadAdminLogs();
+        }
+
+        async function loadAdminUsers() {
+            const res = await fetch('/api/admin/users');
+            const data = await res.json();
+            if (data.success) {
+                let html = `<table class="w-full text-left border-collapse">
+                    <tr class="border-b border-slate-700 text-mudassir-400"><th>Email</th><th>Password</th><th>Expires</th><th>Status</th><th>Action</th></tr>`;
+                data.users.forEach(u => {
+                    html += `<tr class="border-b border-slate-800">
+                        <td>${u.email}</td><td class="text-pink-400 font-bold">${u.password}</td><td>${u.expiry_date}</td><td>${u.status}</td>
+                        <td><button onclick="deleteUser(${u.id})" class="text-red-400 font-bold">Delete</button></td>
+                    </tr>`;
+                });
+                html += `</table>`;
+                document.getElementById('admin-users-table').innerHTML = html;
+            }
+        }
+
+        async function loadAdminLogs() {
+            const res = await fetch('/api/admin/trace_logs');
+            const data = await res.json();
+            if (data.success) {
+                let html = `<table class="w-full text-left border-collapse">
+                    <tr class="border-b border-slate-700 text-mudassir-400"><th>User</th><th>Target Queried</th><th>Time</th><th>IP</th></tr>`;
+                data.logs.forEach(l => {
+                    html += `<tr class="border-b border-slate-800">
+                        <td>${l.user}</td><td class="text-mudassir-400 font-bold">${l.target}</td><td>${l.time}</td><td>${l.ip}</td>
+                    </tr>`;
+                });
+                html += `</table>`;
+                document.getElementById('admin-logs-table').innerHTML = html;
+            }
+        }
+
+        document.getElementById('create-user-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('new-user-email').value;
+            const password = document.getElementById('new-user-pass').value;
+            const days = document.getElementById('new-user-days').value;
+
+            const res = await fetch('/api/admin/users/create', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email, password, days})
+            });
+            const data = await res.json();
+            if (data.success) {
+                showToast("User Provisioned");
+                loadAdminUsers();
+            } else {
+                showToast(data.message, true);
+            }
+        });
+
+        async function deleteUser(id) {
+            await fetch(`/api/admin/users/delete/${id}`, {method: 'DELETE'});
+                showToast("User Removed");
+                loadAdminUsers();
+        }
+
+        // AUTO PLAY VAST VIDEO ADS ENGINE
+        async function loadVASTVideo(videoId) {
+            try {
+                const response = await fetch(VAST_AD_URL);
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+                const mediaFiles = xmlDoc.getElementsByTagName("MediaFile");
+                if (mediaFiles.length > 0) {
+                    const videoSrc = mediaFiles[0].textContent.trim();
+                    const player = document.getElementById(videoId);
+                    if (player) { player.src = videoSrc; player.play(); }
+                }
+            } catch (e) {}
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadVASTVideo("top_video_player");
+            loadVASTVideo("bottom_video_player");
+        });
+    </script>
+</body>
+</html>
