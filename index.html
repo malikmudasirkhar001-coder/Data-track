@@ -10,7 +10,10 @@
     <!-- Official Signed PDF Generator -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <!-- HilltopAds Meta Tags -->
     <meta name="1902dca9dec5be85e1ad2e0dbc933621e76d8332" content="1902dca9dec5be85e1ad2e0dbc933621e76d8332" />
+    <meta name="08f8a931d49d85617de79bfea5b5a79949205e60" content="08f8a931d49d85617de79bfea5b5a79949205e60" />
+
     <script>
     (function(yufn){
     var d = document,
@@ -25,14 +28,12 @@
     </script>
 
     <style>
-        /* THEMES CSS SETUP */
         .theme-pink { --accent: #ec4899; --accent-dark: #db2777; --bg-glow: rgba(236,72,153,0.25); }
         .theme-cyan { --accent: #00E5FF; --accent-dark: #00B8D4; --bg-glow: rgba(0,229,255,0.25); }
         .theme-purple { --accent: #a855f7; --accent-dark: #7e22ce; --bg-glow: rgba(168,85,247,0.25); }
 
         body { font-family: 'Segoe UI', system-ui, sans-serif; background: #07090e; color: #fff; }
 
-        /* CENTERED COMPACT AD FRAMES */
         .auto-top-video-frame, .auto-bottom-video-frame {
             position: fixed; left: 50%; transform: translateX(-50%);
             width: 100%; max-width: 460px; height: 80px;
@@ -95,7 +96,7 @@
         </div>
     </div>
 
-    <!-- MAIN APP CONTENT (LOCKED UNTIL LOGIN) -->
+    <!-- MAIN APP CONTENT -->
     <div class="middle-work-area hidden" id="main-app-content">
         <div id="toast-container" class="fixed bottom-24 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
@@ -112,7 +113,6 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <!-- THEME SWITCHER -->
                     <select onchange="changeTheme(this.value)" class="bg-black border border-slate-700 text-xs text-[var(--accent)] font-mono rounded-lg p-1.5 outline-none">
                         <option value="theme-pink">Pink Neon</option>
                         <option value="theme-cyan">Cyber Cyan</option>
@@ -165,7 +165,6 @@
             <span onclick="closeModal('admin-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">✕</span>
             <h3 class="text-lg font-mono font-bold text-[var(--accent)] mb-4"><i class="bi bi-shield-lock"></i> Master Admin Audit Controls</h3>
             
-            <!-- Provision New User -->
             <div class="bg-black/60 p-4 rounded-xl border border-slate-800 mb-6">
                 <h4 class="text-xs font-mono text-[var(--accent)] mb-2 font-bold">Provision New User Account</h4>
                 <form id="create-user-form" class="grid grid-cols-1 md:grid-cols-3 gap-2">
@@ -176,11 +175,9 @@
                 </form>
             </div>
 
-            <!-- Users List Table with View History Buttons -->
             <h4 class="text-xs font-mono text-white mb-2 font-bold">Registered Users (Click 'View History' to Audit Search Logs)</h4>
             <div id="admin-users-table" class="mb-6 overflow-x-auto text-xs"></div>
 
-            <!-- Specific User Search Audit Logs Panel -->
             <div id="user-audit-container" class="hidden bg-black/80 p-4 rounded-xl border border-pink-500/50">
                 <div class="flex justify-between items-center mb-3">
                     <h4 class="text-xs font-mono text-pink-400 font-bold" id="audit-user-title">User Audit Log</h4>
@@ -244,20 +241,17 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Header Banner
             doc.setFillColor(219, 39, 119);
             doc.rect(0, 0, 210, 28, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(16);
             doc.text("MUDASSIR ZONE - OFFICIAL IDENTITY VERIFICATION REPORT", 12, 18);
 
-            // Metadata
             doc.setTextColor(40, 40, 40);
             doc.setFontSize(10);
             doc.text(`Report Date: ${new Date().toLocaleString()}`, 14, 38);
             doc.text(`Security Verification Hash: MUDASSIR-SEC-OFFICIAL-2026`, 14, 45);
 
-            // Clean Structured Record Box
             doc.setDrawColor(219, 39, 119);
             doc.setLineWidth(0.5);
             doc.rect(14, 52, 182, 75);
@@ -268,7 +262,6 @@
             doc.text(`National Identity (CNIC): ${cnic || 'N/A'}`, 20, 93);
             doc.text(`Registered Address: ${address || 'N/A'}`, 20, 106);
 
-            // Official Signature & Digital Stamp
             doc.setDrawColor(34, 197, 94);
             doc.rect(125, 140, 68, 28);
             doc.setTextColor(34, 197, 94);
@@ -380,7 +373,6 @@
             }
         }
 
-        // Fetch & render individual user search history
         async function viewUserHistory(email) {
             const res = await fetch(`/api/admin/user_history/${encodeURIComponent(email)}`);
             const data = await res.json();
